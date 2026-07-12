@@ -1,0 +1,43 @@
+<div class="card mt-3">
+  <div class="card-header">Clientes</div>
+  <div class="card-body">
+    <h5 class="card-title text-primary">Listado de Clientes</h5>
+
+    <div class="mb-3">
+      <!-- Botón con diseño azul de Bootstrap -->
+      <button class="btn btn-primary" type="button" routerLink="/clientes/form">Crear Cliente</button>
+    </div>
+
+    <!-- Tabla con diseño de bordes de Bootstrap -->
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>nombre</th>
+          <th>apellido</th>
+          <th>email</th>
+          <th>fecha</th>
+          <th>editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (cliente of clientes; track cliente.id) {
+        <tr>
+          <td>{{ cliente.id }}</td>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.apellido }}</td>
+          <td>{{ cliente.email }}</td>
+          <td>{{ cliente.createAt }}</td>
+          <td>
+            <button class="btn btn-info btn-sm">Editar</button>
+          </td>
+        </tr>
+        } @empty {
+        <tr>
+          <td colspan="6" class="text-center">No hay clientes para mostrar</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
