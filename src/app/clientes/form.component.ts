@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // Necesario para usar [(ngModel)]
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router'; // <-- 1. Asegúrate de importar el Router
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -13,13 +13,18 @@ import { Router } from '@angular/router';
 export class FormComponent implements OnInit {
   cliente: Cliente = new Cliente();
 
-  constructor(private clienteService: ClienteService) {}
-    ngOnInit(): void {
+  // 2. Inyecta el Router en el constructor
+  constructor(
+    private clienteService: ClienteService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
   }
 
   create(): void {
     this.clienteService.createCliente(this.cliente).subscribe(() => {
-      this.cliente = new Cliente();
+      this.router.navigate(['/clientes']); 
     });
   }
 }

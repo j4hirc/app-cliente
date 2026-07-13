@@ -8,7 +8,7 @@ import { Cliente } from './cliente';
 })
 export class ClienteService {
   // Asegúrate de que esta sea la IP actual de tu máquina virtual
-   private urlEndPoint: string = 'http://192.168.3.91:8381/api/clientes';  
+  private urlEndPoint: string = 'http://192.168.47.20:8381/api/clientes';  
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
